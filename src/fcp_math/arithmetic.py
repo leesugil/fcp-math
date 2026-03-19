@@ -156,5 +156,6 @@ def list2dict(x: list[list[float]]) -> list[dict]:
         d = {}
         d['start'] = float2fcpsec(e[0])
         d['end'] = float2fcpsec(e[1])
+        assert e[1] > e[0], f"d['start'] from {e[0].limit_denominator(60)}, d['end'] from {e[1].limit_denominator(60)}"
         output.append(d)
     return output
