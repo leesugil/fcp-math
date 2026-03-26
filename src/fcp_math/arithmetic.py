@@ -176,6 +176,6 @@ def fcpsec2hhmmss(a: str):
     mm = seconds // 60
     ss = seconds % 60
 
-    output = f"{hh}:{mm}:{ss}"
+    output = f"{hh:02d}:{mm:02d}:{ss:02d}"
 
     return output
