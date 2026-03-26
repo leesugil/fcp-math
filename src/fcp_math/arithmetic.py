@@ -1,4 +1,5 @@
 from fractions import Fraction
+import math
 
 def unfrac(frac):
     """
@@ -158,4 +159,23 @@ def list2dict(x: list[list[float]]) -> list[dict]:
         d['end'] = float2fcpsec(e[1])
         assert e[1] > e[0], f"d['start'] from {e[0].limit_denominator(60)}, d['end'] from {e[1].limit_denominator(60)}"
         output.append(d)
+    return output
+
+def fcpsec2hhmmss(a: str):
+    """
+    a: xxxx/yys
+
+    output: hh:mm:ss
+    """
+    a = fcpsec2frac(a)
+    seconds = math.floor(a)
+    
+    hh = seconds // 3600
+    seconds = seconds % 3600
+
+    mm = seconds // 60
+    ss = seconds % 60
+
+    output = f"{hh}:{mm}:{ss}"
+
     return output
