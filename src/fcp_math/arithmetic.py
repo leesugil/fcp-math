@@ -179,3 +179,13 @@ def fcpsec2hhmmss(a: str):
     output = f"{hh:02d}:{mm:02d}:{ss:02d}"
 
     return output
+
+def is_equal_fcpsec(stamp1, stamp2):
+    """
+    stamp1: '14000/6000s'
+    stamp2: '140/60s'
+    fps: '100/6000s'
+    """
+    a = fcpsec2frac(stamp1)
+    b = fcpsec2frac(stamp2)
+    return a == b
