@@ -180,6 +180,28 @@ def fcpsec2hhmmss(a: str):
 
     return output
 
+def fcpsec2hhmmssf(a: str):
+    """
+    includes fractional seconds.
+
+    a: xxxx/yys
+
+    output: hh:mm:ss.f
+    """
+    a = fcpsec2frac(a)
+    seconds = math.floor(a)
+    decimal = round(float(max(a - seconds, 0.0)) * 1000)
+    
+    hh = seconds // 3600
+    seconds = seconds % 3600
+
+    mm = seconds // 60
+    ss = seconds % 60
+
+    output = f"{hh:02d}:{mm:02d}:{ss:02d}.{decimal:03d}"
+
+    return output
+
 def is_equal_fcpsec(stamp1, stamp2):
     """
     stamp1: '14000/6000s'
